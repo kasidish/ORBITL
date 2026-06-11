@@ -1,5 +1,8 @@
 import supabase from './supabaseClient';
 
+const spaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID || '';
+const accessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN || '';
+
 // Premium mock news data with rich content for fallbacks and initial testing
 const MOCK_NEWS = [
   {
@@ -76,10 +79,103 @@ The hardware debugging phase will begin immediately upon arrival of the boards. 
 ];
 
 /**
+ * Fetch helper for Contentful Delivery API
+ */
+async function fetchFromContentful() {
+  const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/entries?access_token=${accessToken}&content_type=news&order=-sys.createdAt`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Contentful API error: ${res.statusText}`);
+  const json = await res.json();
+
+  const items = json.items || [];
+  const assets = (json.includes && json.includes.Asset) || [];
+
+  return items.map(item => {
+    const fields = item.fields;
+    let image_url = null;
+
+    if (fields.image && fields.image.sys && fields.image.sys.id) {
+      const assetId = fields.image.sys.id;
+      const asset = assets.find(a => a.sys.id === assetId);
+      if (asset && asset.fields && asset.fields.file && asset.fields.file.url) {
+        image_url = asset.fields.file.url;
+        if (!image_url.startsWith('http')) {
+          image_url = 'https:' + image_url;
+        }
+      }
+    }
+
+    return {
+      id: item.sys.id,
+      title: fields.title || '',
+      date: fields.date || new Date(item.sys.createdAt).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }),
+      description: fields.description || '',
+      content: fields.content || '',
+      image_url: image_url
+    };
+  });
+}
+
+/**
+ * Fetch a single entry from Contentful
+ */
+async function fetchOneFromContentful(id) {
+  const url = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/entries/${id}?access_token=${accessToken}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Contentful API error: ${res.statusText}`);
+  const item = await res.json();
+  const fields = item.fields;
+
+  let image_url = null;
+  if (fields.image && fields.image.sys && fields.image.sys.id) {
+    const assetId = fields.image.sys.id;
+    // Query asset details specifically
+    const assetUrl = `https://cdn.contentful.com/spaces/${spaceId}/environments/master/assets/${assetId}?access_token=${accessToken}`;
+    const assetRes = await fetch(assetUrl);
+    if (assetRes.ok) {
+      const assetJson = await assetRes.json();
+      if (assetJson.fields && assetJson.fields.file && assetJson.fields.file.url) {
+        image_url = assetJson.fields.file.url;
+        if (!image_url.startsWith('http')) {
+          image_url = 'https:' + image_url;
+        }
+      }
+    }
+  }
+
+  return {
+    id: item.sys.id,
+    title: fields.title || '',
+    date: fields.date || new Date(item.sys.createdAt).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }),
+    description: fields.description || '',
+    content: fields.content || '',
+    image_url: image_url
+  };
+}
+
+/**
  * Fetches all news articles from the configured CMS.
- * Falls back to local mock news if fetching fails or if CMS is unconfigured.
+ * Falls back to Supabase, then local mock news.
  */
 export async function fetchNews() {
+  // 1. Try Contentful if configured
+  if (spaceId && accessToken) {
+    try {
+      return await fetchFromContentful();
+    } catch (err) {
+      console.warn('Contentful fetch failed, trying Supabase:', err.message);
+    }
+  }
+
+  // 2. Try Supabase if configured
   if (supabase) {
     try {
       const { data, error } = await supabase
@@ -87,12 +183,9 @@ export async function fetchNews() {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
       if (data && data.length > 0) {
-        // Map database fields to standard schema
         return data.map(item => ({
           id: item.id.toString(),
           title: item.title,
@@ -111,7 +204,7 @@ export async function fetchNews() {
     }
   }
 
-  // Fallback to local mock data
+  // 3. Fallback to local mock data
   return MOCK_NEWS;
 }
 
@@ -119,20 +212,25 @@ export async function fetchNews() {
  * Fetches a single news article by ID or slug.
  */
 export async function fetchNewsById(id) {
+  // 1. Try Contentful if configured
+  if (spaceId && accessToken) {
+    try {
+      return await fetchOneFromContentful(id);
+    } catch (err) {
+      console.warn('Contentful fetch individual failed, checking Supabase:', err.message);
+    }
+  }
+
+  // 2. Try Supabase if configured
   if (supabase) {
     try {
-      // Try querying by UUID
       const { data, error } = await supabase
         .from('news')
         .select('*')
         .eq('id', id)
         .single();
 
-      if (error) {
-        // If it looks like a text slug instead of a UUID, we can try searching by title or code matches
-        // For simplicity, we just throw or try to match if standard select fails
-        throw error;
-      }
+      if (error) throw error;
 
       if (data) {
         return {
@@ -153,7 +251,7 @@ export async function fetchNewsById(id) {
     }
   }
 
-  // Find in mock data
+  // 3. Find in mock data
   const mockItem = MOCK_NEWS.find(item => item.id === id);
   if (mockItem) {
     return mockItem;

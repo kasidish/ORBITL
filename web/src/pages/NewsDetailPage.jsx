@@ -199,7 +199,7 @@ function NewsDetailPage() {
                 className="overflow-hidden rounded-3xl border border-border/80 bg-card/40 backdrop-blur-md shadow-lg"
               >
                 {/* Hero Banner / Cover Image */}
-                {news.image_url ? (
+                {news.image_url && news.image_url.trim() !== '' ? (
                   <div className="relative h-64 sm:h-96 w-full overflow-hidden">
                     <img
                       src={news.image_url}

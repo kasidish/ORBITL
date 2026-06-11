@@ -12,7 +12,7 @@ export function NewsCard({ id, date, title, description, image_url, index = 0 })
         transition={{ duration: 0.5, delay: index * 0.1 }}
         className="bg-card border border-border/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:border-primary/50 hover:shadow-primary/5 transition-all duration-300 group h-full flex flex-col"
       >
-        {image_url && (
+        {image_url && image_url.trim() !== '' && (
           <div className="h-48 w-full overflow-hidden relative">
             <img 
               src={image_url} 
