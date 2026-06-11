@@ -1,0 +1,14 @@
+node_modules/
+dist/
+/web/node_modules/
+/web/dist/
+.env.local
+.env
+.DS_Store
+.vite
+*.log
+/.history
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
