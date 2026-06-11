@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Rocket, Satellite, Zap } from 'lucide-react';
+import { Rocket, Satellite, Zap, Antenna } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -78,7 +78,7 @@ function HomePage() {
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <Satellite className="text-primary" size={24} />
+                        <Antenna className="text-primary" size={24} />
                       </div>
                     </div>
                     <div>
