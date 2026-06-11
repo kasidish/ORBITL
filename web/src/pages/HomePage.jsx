@@ -78,13 +78,13 @@ function HomePage() {
                   <div className="flex gap-4">
                     <div className="flex-shrink-0">
                       <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <Rocket className="text-primary" size={24} />
+                        <Satellite className="text-primary" size={24} />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Propulsion Systems</h3>
+                      <h3 className="text-xl font-semibold mb-2">Ground Station</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        Design and test advanced propulsion technologies for next-generation spacecraft
+                        Develop and operate ground station infrastructure for satellite telemetry, command, and data downlink
                       </p>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ function HomePage() {
                       <div className="text-6xl font-bold text-primary mb-4">7</div>
                       <p className="text-xl font-medium">Technical Disciplines</p>
                       <p className="text-sm text-muted-foreground mt-2">
-                        Avionics • Propulsion • Structure • EPS • ADCS • OBC • FSW
+                        Payload • Structure • OBC & FSW • EPS • ADCS • COMMS
                       </p>
                     </div>
                   </div>
