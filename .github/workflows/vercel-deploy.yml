@@ -13,6 +13,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+      - name: Install root dependencies
+        run: npm ci --prefer-offline --no-audit --progress=false
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v20
         with:
