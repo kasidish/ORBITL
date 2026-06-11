@@ -12,6 +12,7 @@
     "concurrently": "^9.1.2"
   },
   "workspaces": [
+    "web",
     "apps/*"
   ]
 }
