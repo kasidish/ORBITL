@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/select';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
 
 function JoinPage() {
   const navigate = useNavigate();
@@ -48,10 +48,12 @@ function JoinPage() {
     setIsSubmitting(true);
 
     try {
-      await pb.collection('members').create(formData, { $autoCancel: false });
-      
+      if (!supabase) throw new Error('Supabase not configured');
+      const { data, error } = await supabase.from('members').insert([formData]).select();
+      if (error) throw error;
+
       toast.success('Welcome to ORBITL! Your membership application has been submitted.');
-      
+
       setFormData({
         full_name: '',
         email: '',
@@ -62,10 +64,10 @@ function JoinPage() {
 
       setTimeout(() => {
         navigate('/');
-      }, 2000);
+      }, 1500);
     } catch (error) {
       console.error('Submission error:', error);
-      toast.error('Failed to submit application. Please try again.');
+      toast.error(error.message || 'Failed to submit application. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -157,13 +159,12 @@ function JoinPage() {
                       <SelectTrigger id="year_of_study" className="text-foreground">
                         <SelectValue placeholder="Select your year" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Freshman">Freshman</SelectItem>
-                        <SelectItem value="Sophomore">Sophomore</SelectItem>
-                        <SelectItem value="Junior">Junior</SelectItem>
-                        <SelectItem value="Senior">Senior</SelectItem>
-                        <SelectItem value="Graduate">Graduate</SelectItem>
-                      </SelectContent>
+                        <SelectContent>
+                          <SelectItem value="1">Freshman (1)</SelectItem>
+                          <SelectItem value="2">Sophomore (2)</SelectItem>
+                          <SelectItem value="3">Junior (3)</SelectItem>
+                          <SelectItem value="4">Senior (4)</SelectItem>
+                        </SelectContent>
                     </Select>
                   </div>
 
@@ -180,13 +181,14 @@ function JoinPage() {
                         <SelectValue placeholder="Select your area of interest" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Avionics">Avionics</SelectItem>
-                        <SelectItem value="Propulsion">Propulsion</SelectItem>
                         <SelectItem value="Structure">Structure</SelectItem>
                         <SelectItem value="EPS">EPS (Electrical Power Systems)</SelectItem>
                         <SelectItem value="ADCS">ADCS (Attitude Determination & Control)</SelectItem>
-                        <SelectItem value="OBC">OBC (Onboard Computer)</SelectItem>
-                        <SelectItem value="FSW">FSW (Flight Software)</SelectItem>
+                        <SelectItem value="OBC_FSW">OBC & FSW</SelectItem>
+                        <SelectItem value="Payload">Payload</SelectItem>
+                        <SelectItem value="SocialMedia">Social Media Team</SelectItem>
+                        <SelectItem value="Business">Business Team</SelectItem>
+                        <SelectItem value="COMMS">COMMS (CubeSat Communication System)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
