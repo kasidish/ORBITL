@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+cache-control: public, max-age=0, must-revalidate
+server: Vercel
+x-vercel-id: dev1::dev1::5j3co-1781174935101-a5b4d0c292c9
+x-vercel-cache: MISS
+connection: close
+content-disposition: attachment; filename="contact_messages.csv"
+content-length: 172
+content-type: text/csv; charset=utf-8
+date: Thu, 11 Jun 2026 10:48:55 GMT
+etag: W/"ac-6rSxR2jW9P5w6mI857jRpfZESf0"
+
+id,created_at,name,email,message
+3e427e75-5493-4581-a7be-22f81e7ff39a,2026-06-11T08:41:45.695042,Assistant Test,assistant@example.com,Test submission from you (run locally)

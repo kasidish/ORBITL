@@ -8,6 +8,7 @@ import AboutPage from './pages/AboutPage';
 import MissionPage from './pages/MissionPage';
 import NewsPage from './pages/NewsPage';
 import ContactPage from './pages/ContactPage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/join" element={<JoinPage />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={
           <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-6xl font-bold text-primary mb-4">404</h1>

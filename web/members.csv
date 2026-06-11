@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+cache-control: public, max-age=0, must-revalidate
+server: Vercel
+x-vercel-id: dev1::dev1::5j3co-1781176036305-531f0ff34cba
+x-vercel-cache: MISS
+connection: close
+content-disposition: attachment; filename="members.csv"
+content-length: 196
+content-type: text/csv; charset=utf-8
+date: Thu, 11 Jun 2026 11:07:16 GMT
+etag: W/"c4-8YUgGpHdH16HYLasnFSunapQgMQ"
+
+id,full_name,email,major,year_of_study,area_of_interest,created_at
+3b41805f-0124-4cd2-9d03-da3c2a4402e7,Node Test Member,node-test@example.com,Test Major,3,Payload,2026-06-11T11:07:01.249704+00:00

@@ -217,6 +217,32 @@ This will print the latest 50 records (or an error explaining why it failed).
 5) What admin can do now and recommended enhancements
 - Current admin capabilities:
   - View the latest `contact_messages` via `/admin` (read-only).
+
+  Members (`members` table)
+  --------------------------
+
+  The Join form now writes to a Supabase table named `members`. Create this table in your Supabase project before testing or deploying.
+
+  Example SQL to run in the Supabase SQL editor:
+
+  ```sql
+  create table public.members (
+    id uuid default gen_random_uuid() primary key,
+    full_name text,
+    email text,
+    major text,
+    year_of_study text,
+    area_of_interest text,
+    created_at timestamptz default now()
+  );
+  ```
+
+  After creating the table you can view and manage member rows in the Supabase table editor or via the admin endpoints:
+
+  - `GET /api/admin/members` — list members (admin only)
+  - `GET /api/admin/members.csv` — export CSV (admin only)
+  - `DELETE /api/admin/members/{id}` — delete member (admin only)
+
   - Login with `ADMIN_SECRET` to set a cookie-based session.
 - Recommended improvements I can add (pick any):
   - Delete a message: implement `DELETE /api/admin/records/:id` (server-only) so admins can remove spam.

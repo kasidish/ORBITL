@@ -11,7 +11,14 @@ L.Icon.Default.mergeOptions({
 });
 
 export function MapComponent() {
-  const position = [13.0827, 100.6270]; // KMITL coordinates
+  const latEnv = import.meta.env.VITE_MAP_LAT;
+  const lngEnv = import.meta.env.VITE_MAP_LNG;
+  const defaultLat = 13.0827;
+  const defaultLng = 100.6270;
+
+  const lat = latEnv ? parseFloat(latEnv) : defaultLat;
+  const lng = lngEnv ? parseFloat(lngEnv) : defaultLng;
+  const position = [isNaN(lat) ? defaultLat : lat, isNaN(lng) ? defaultLng : lng];
 
   return (
     <div className="h-[400px] w-full rounded-2xl overflow-hidden border border-border shadow-sm z-0 relative">
