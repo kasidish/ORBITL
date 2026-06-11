@@ -1,6 +1,7 @@
 # ORBITL Website
 
 This repository contains the ORBITL frontend (`web/`) built with React + Vite and Tailwind.
+The current Vercel site remains live while a Drupal CMS rebuild is started under `cms/drupal/`.
 
 Quick local steps
 
@@ -23,5 +24,7 @@ Deploy notes
 
 - Frontend: Vercel or Cloudflare Pages (set project root to `web`, build `npm run build`, output `dist`)
 - Backend: Supabase recommended for form storage (set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in env)
+- Admin: the old custom `/admin` route has been removed. Use the Drupal CMS rebuild for content editing going forward.
+- CMS migration: see `cms/drupal/README.md` and `cms/drupal/content-model.md`.
 
 If you want, I can walk you through creating the GitHub repo on github.com and finalizing the push.

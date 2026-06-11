@@ -1,0 +1,7 @@
+global:
+  css:
+    theme:
+      css/orbitl.css: {}
+  js:
+    js/orbitl.js: {}
+

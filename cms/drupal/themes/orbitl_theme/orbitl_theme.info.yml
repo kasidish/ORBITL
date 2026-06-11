@@ -1,0 +1,13 @@
+name: ORBITL Theme
+type: theme
+description: Custom Drupal theme starter for the ORBITL website.
+core_version_requirement: ^10 || ^11
+base theme: stable9
+libraries:
+  - orbitl_theme/global
+regions:
+  header: Header
+  primary_menu: Primary menu
+  content: Content
+  footer: Footer
+

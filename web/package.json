@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite --host :: --port 3000",
     "build": "node tools/generate-llms.js && vite build --outDir dist",
-    "admin:fetch": "node -r dotenv/config web/tools/fetch_admin_records.js",
     "start": "vite preview --outDir dist --host :: --port 3000",
     "lint": "eslint . --quiet",
     "lint:warn": "eslint ."
