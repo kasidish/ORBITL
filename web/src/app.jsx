@@ -7,7 +7,6 @@ import JoinPage from './pages/JoinPage';
 import AboutPage from './pages/AboutPage';
 import MissionPage from './pages/MissionPage';
 import NewsPage from './pages/NewsPage';
-import NewsDetailPage from './pages/NewsDetailPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/mission" element={<MissionPage />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/news/:id" element={<NewsDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/join" element={<JoinPage />} />
         <Route path="*" element={

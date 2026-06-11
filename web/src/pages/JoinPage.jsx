@@ -49,7 +49,7 @@ function JoinPage() {
 
     try {
       if (!supabase) throw new Error('Supabase not configured');
-      const { data, error } = await supabase.from('members').insert([formData]).select();
+      const { error } = await supabase.from('members').insert([formData]);
       if (error) throw error;
 
       toast.success('Welcome to ORBITL! Your membership application has been submitted.');
