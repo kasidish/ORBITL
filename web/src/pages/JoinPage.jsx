@@ -181,14 +181,14 @@ function JoinPage() {
                         <SelectValue placeholder="Select your area of interest" />
                       </SelectTrigger>
                       <SelectContent>
+                        <SelectItem value="Payload">Payload</SelectItem>
                         <SelectItem value="Structure">Structure</SelectItem>
+                        <SelectItem value="OBC_FSW">OBC & FSW</SelectItem>
                         <SelectItem value="EPS">EPS (Electrical Power Systems)</SelectItem>
                         <SelectItem value="ADCS">ADCS (Attitude Determination & Control)</SelectItem>
-                        <SelectItem value="OBC_FSW">OBC & FSW</SelectItem>
-                        <SelectItem value="Payload">Payload</SelectItem>
-                        <SelectItem value="SocialMedia">Social Media Team</SelectItem>
-                        <SelectItem value="Business">Business Team</SelectItem>
                         <SelectItem value="COMMS">COMMS (CubeSat Communication System)</SelectItem>
+                        <SelectItem value="Business">Business</SelectItem>
+                        <SelectItem value="SocialMedia">Social Media</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
