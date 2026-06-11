@@ -23,7 +23,9 @@ export function SocialLinks({ className = "" }) {
         <Facebook size={20} />
       </a>
       <a
-        href="mailto:kmitlspace@gmail.com"
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=kmitlspace@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
         className="text-foreground/80 hover:text-primary transition-colors"
         aria-label="Email"
       >
