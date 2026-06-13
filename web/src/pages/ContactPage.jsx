@@ -27,7 +27,7 @@ function ContactPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-16">Get in Touch</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Have questions about our projects or want to collaborate? We'd love to hear from you.
               </p>
@@ -41,7 +41,7 @@ function ContactPage() {
                 className="space-y-8"
               >
                 <div className="bg-card border border-border rounded-3xl p-8 shadow-sm">
-                  <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+                  <h2 className="text-2xl font-bold mb-6 ">Contact Information</h2>
                   
                   <div className="space-y-6">
                     <div className="flex items-start gap-4">

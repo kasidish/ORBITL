@@ -24,7 +24,7 @@ function MissionPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-20"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Mission & Vision</h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-16">Mission & Vision</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Guiding our journey towards the stars with clear objectives and a bold vision for the future.
               </p>
