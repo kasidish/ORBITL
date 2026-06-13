@@ -23,7 +23,7 @@ function AboutPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">About ORBITL</h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-16">About ORBITL</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 We are a student-led organization at King Mongkut's Institute of Technology Ladkrabang (KMITL) dedicated to pushing the boundaries of space and satellite technology.
               </p>
