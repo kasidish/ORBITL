@@ -36,7 +36,7 @@ function NewsPage() {
   return (
     <>
       <Helmet>
-        <title>News & Updates - ORBITL</title>
+        <title>News - ORBITL</title>
         <meta name="description" content="Stay updated with the latest news, achievements, and announcements from ORBITL." />
       </Helmet>
 

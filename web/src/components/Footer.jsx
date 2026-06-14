@@ -26,7 +26,7 @@ function Footer() {
                 Our Mission
               </Link>
               <Link to="/news" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
-                News & Updates
+                News
               </Link>
               <Link to="/contact" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                 Contact
