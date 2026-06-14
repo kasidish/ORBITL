@@ -8,7 +8,6 @@ import AboutPage from './pages/AboutPage';
 import MissionPage from './pages/MissionPage';
 import NewsPage from './pages/NewsPage';
 import ContactPage from './pages/ContactPage';
-import myLogo from './images/ORBITL-Photoroom.png';
 
 function App() {
   return (
@@ -16,7 +15,7 @@ function App() {
       <ScrollToTop />
       <header className="bg-background border-b sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition">
-          <img src={myLogo} alt="Logo" className="w-8 h-8 object-contain" />
+          <img src={'../images/ORBITL-Photoroom.png'} alt="Logo" className="w-8 h-8 object-contain" />
           <span className="font-bold text-xl">My Website</span>
         </Link>
         
