@@ -14,10 +14,17 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <header className="p-4 bg-slate-900 text-white flex items-center gap-2">
-        <img src={myIcon} alt="Orbitl Logo" className="w-8 h-8 object-contain" />
-        <span>Orbitl Project</span>
-      </header>
+      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4"></div>
+          <Link to="/" className="flex items-center gap-2 font-bold text-xl">
+            <img 
+              src={myIcon} 
+              alt="ORBITL Logo" 
+              className="h-8 w-auto object-contain" 
+            />
+            <span>ORBITL</span>
+          </Link>
+      </nav>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
