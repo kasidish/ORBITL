@@ -93,7 +93,8 @@ function JoinPage() {
               <div className="text-center mb-12">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">Join ORBITL</h1>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-prose mx-auto">
-                  Take the first step toward advancing space technology. Fill out the form below to apply for membership.
+                  Take the first step toward advancing space technology.
+                  Fill out the form below to apply for membership.
                 </p>
               </div>
 
@@ -141,7 +142,7 @@ function JoinPage() {
                       type="text"
                       value={formData.major}
                       onChange={handleInputChange}
-                      placeholder="e.g., Aerospace Engineering"
+                      placeholder="e.g., Space Engineering"
                       required
                       className="text-foreground"
                     />
@@ -160,10 +161,10 @@ function JoinPage() {
                         <SelectValue placeholder="Select your year" />
                       </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1">Freshman (1)</SelectItem>
-                          <SelectItem value="2">Sophomore (2)</SelectItem>
-                          <SelectItem value="3">Junior (3)</SelectItem>
-                          <SelectItem value="4">Senior (4)</SelectItem>
+                          <SelectItem value="1">Freshman ( year 1)</SelectItem>
+                          <SelectItem value="2">Sophomore ( year 2)</SelectItem>
+                          <SelectItem value="3">Junior ( year 3)</SelectItem>
+                          <SelectItem value="4">Senior ( year 4)</SelectItem>
                         </SelectContent>
                     </Select>
                   </div>
@@ -187,8 +188,8 @@ function JoinPage() {
                         <SelectItem value="EPS">EPS (Electrical Power Systems)</SelectItem>
                         <SelectItem value="ADCS">ADCS (Attitude Determination & Control)</SelectItem>
                         <SelectItem value="COMMS">COMMS (CubeSat Communication System)</SelectItem>
-                        <SelectItem value="Business">Business</SelectItem>
-                        <SelectItem value="SocialMedia">Social Media</SelectItem>
+                        <SelectItem value="Business">Business Team</SelectItem>
+                        <SelectItem value="SocialMedia">Social Media Team</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

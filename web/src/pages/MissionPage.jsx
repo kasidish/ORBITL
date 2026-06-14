@@ -46,7 +46,7 @@ function MissionPage() {
                 </div>
                 <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  To empower students with hands-on experience in aerospace engineering by designing, building, and operating functional satellite systems. We strive to foster a culture of innovation, teamwork, and technical excellence.
+                  To empower students with hands-on experience in space engineering by designing, building, and operating functional satellite systems. We strive to foster a culture of innovation, teamwork, and technical excellence.
                 </p>
               </motion.div>
 
@@ -86,7 +86,7 @@ function MissionPage() {
                 {[
                   {
                     title: "Technical Excellence",
-                    desc: "Develop reliable, flight-ready hardware and software subsystems that meet rigorous aerospace standards."
+                    desc: "Develop reliable, flight-ready hardware and software subsystems that meet rigorous space standards."
                   },
                   {
                     title: "Knowledge Transfer",

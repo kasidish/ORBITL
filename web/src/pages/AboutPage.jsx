@@ -8,7 +8,7 @@ function AboutPage() {
   return (
     <>
       <Helmet>
-        <title>About ORBITL - Space Technology at KMITL</title>
+        <title>About - ORBITL</title>
         <meta name="description" content="Learn about ORBITL, our team, and our role in advancing space technology at KMITL." />
       </Helmet>
 
@@ -25,7 +25,7 @@ function AboutPage() {
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 mt-16">About ORBITL</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                We are a student-led organization at King Mongkut's Institute of Technology Ladkrabang (KMITL) dedicated to pushing the boundaries of space and satellite technology.
+                We are a student-led group at King Mongkut's Institute of Technology Ladkrabang (KMITL) dedicated to pushing the boundaries of space and satellite technology.
               </p>
             </motion.div>
 
@@ -38,7 +38,7 @@ function AboutPage() {
               >
                 <div className="aspect-video rounded-2xl overflow-hidden bg-muted relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80" 
+                    src="/web/src/pictures/2048-1365-max (2).jpg" 
                     alt="Earth from space showing technological advancement" 
                     className="w-full h-full object-cover"
                   />
@@ -55,7 +55,7 @@ function AboutPage() {
               >
                 <h2 className="text-3xl font-bold">Our Organization</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Founded by passionate engineering students, ORBITL serves as a hub for innovation, research, and practical application of aerospace engineering principles. We bridge the gap between theoretical knowledge and real-world space missions.
+                  Founded by passionate engineering students, ORBITL serves as a hub for innovation, research, and practical application of space engineering principles. We bridge the gap between theoretical knowledge and real-world space missions.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Through hands-on projects, collaborative research, and industry partnerships, we prepare the next generation of engineers to tackle the complex challenges of space exploration.
