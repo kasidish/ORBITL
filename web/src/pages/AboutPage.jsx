@@ -2,7 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header.jsx';
-import Footer from '@/components/Footer.jsx';
+import Footer from '@/components/Footer.jsx'; 
+import myImage from '../images/2048-1365-max (2).jpg';
 
 function AboutPage() {
   return (
@@ -37,8 +38,8 @@ function AboutPage() {
                 transition={{ duration: 0.6 }}
               >
                 <div className="aspect-video rounded-2xl overflow-hidden bg-muted relative">
-                  <img 
-                    src={require('../pictures/2048-1365-max (2).jpg')}
+                  <img
+                    src={myImage}
                     alt="SPACE01" 
                     className="w-full h-full object-cover"
                   />
