@@ -38,7 +38,7 @@ function AboutPage() {
               >
                 <div className="aspect-video rounded-2xl overflow-hidden bg-muted relative">
                   <img
-                    src="/web/src/pictures/2048-1365-max (2).jpg" 
+                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80"
                     alt="Earth from space showing technological advancement"
                     className="w-full h-full object-cover"
                   />
