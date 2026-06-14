@@ -15,7 +15,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4"></div>
+        <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-4">
           <Link to="/" className="flex items-center gap-2 font-bold text-xl">
             <img 
               src={myIcon} 
@@ -24,7 +24,17 @@ function App() {
             />
             <span>ORBITL</span>
           </Link>
+          <div className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
+            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
+            <Link to="/about" className="hover:text-primary transition-colors">About</Link>
+            <Link to="/mission" className="hover:text-primary transition-colors">Mission</Link>
+            <Link to="/news" className="hover:text-primary transition-colors">News</Link>
+            <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+            <Link to="/join" className="bg-primary text-primary-foreground px-4 py-2 rounded-md hover:bg-primary/90 transition-colors">Join Us</Link>
+          </div>
+        </div>
       </nav>
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

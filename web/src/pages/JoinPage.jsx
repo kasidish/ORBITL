@@ -76,7 +76,7 @@ function JoinPage() {
   return (
     <>
       <Helmet>
-        <title>{`Join ORBITL - Membership Application`}</title>
+        <title>{`Join ORBITL`}</title>
         <meta name="description" content="Apply to join ORBITL and contribute to space and satellite technology innovation" />
       </Helmet>
 
