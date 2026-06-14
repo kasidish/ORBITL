@@ -91,7 +91,7 @@ function JoinPage() {
               transition={{ duration: 0.6 }}
             >
               <div className="text-center mb-12">
-                <h1 className="text-4xl md:text-5xl font-bold mb-4">Join ORBITL</h1>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 mt-16">Join ORBITL</h1>
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-prose mx-auto">
                   Take the first step toward advancing space technology.
                   Fill out the form below to apply for membership.
