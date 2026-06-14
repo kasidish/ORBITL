@@ -8,11 +8,16 @@ import AboutPage from './pages/AboutPage';
 import MissionPage from './pages/MissionPage';
 import NewsPage from './pages/NewsPage';
 import ContactPage from './pages/ContactPage';
+import myIcon from './images/ORBITL-Photoroom.png'
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <header className="p-4 bg-slate-900 text-white flex items-center gap-2">
+        <img src={myIcon} alt="Orbitl Logo" className="w-8 h-8 object-contain" />
+        <span>Orbitl Project</span>
+      </header>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

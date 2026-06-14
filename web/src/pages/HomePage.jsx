@@ -11,7 +11,7 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>ORBITL - Space & Satellite Technology Innovation</title>
+        <title>ORBITL</title>
         <meta name="description" content="Join ORBITL to advance space and satellite technology through student innovation and collaboration" />
       </Helmet>
 
