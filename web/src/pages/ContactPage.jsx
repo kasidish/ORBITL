@@ -27,7 +27,7 @@ function ContactPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-16">Get in Touch</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-12">Get in Touch</h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Have questions about our projects or want to collaborate? We'd love to hear from you.
               </p>

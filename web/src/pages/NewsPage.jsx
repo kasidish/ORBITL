@@ -51,7 +51,7 @@ function NewsPage() {
               transition={{ duration: 0.6 }}
               className="mb-16"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-16">Latest News</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-12">Latest News</h1>
               <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
                 Stay up to date with our latest projects, milestones, and announcements.
               </p>
