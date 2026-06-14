@@ -38,8 +38,8 @@ function AboutPage() {
               >
                 <div className="aspect-video rounded-2xl overflow-hidden bg-muted relative">
                   <img
-                    src={'../web/src/images/2048-1365-max (2).jpg'}
-                    alt="SPACE01" 
+                    src="/web/src/pictures/2048-1365-max (2).jpg" 
+                    alt="Earth from space showing technological advancement"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
