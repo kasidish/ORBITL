@@ -38,7 +38,7 @@ function AboutPage() {
               >
                 <div className="aspect-video rounded-2xl overflow-hidden bg-muted relative">
                   <img
-                    src={'/images/2048-1365-max (2).jpg'}
+                    src={'../web/src/images/2048-1365-max (2).jpg'}
                     alt="SPACE01" 
                     className="w-full h-full object-cover"
                   />
