@@ -161,10 +161,10 @@ function JoinPage() {
                         <SelectValue placeholder="Select your year" />
                       </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="1">Freshman ( year 1)</SelectItem>
-                          <SelectItem value="2">Sophomore ( year 2)</SelectItem>
-                          <SelectItem value="3">Junior ( year 3)</SelectItem>
-                          <SelectItem value="4">Senior ( year 4)</SelectItem>
+                          <SelectItem value="1">Freshman (year 1)</SelectItem>
+                          <SelectItem value="2">Sophomore (year 2)</SelectItem>
+                          <SelectItem value="3">Junior (year 3)</SelectItem>
+                          <SelectItem value="4">Senior (year 4)</SelectItem>
                         </SelectContent>
                     </Select>
                   </div>
