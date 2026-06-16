@@ -39,6 +39,7 @@ function NewsDetailPage() {
               })
             : '',
           description: attrs.description || '',
+          content: attrs.content || attrs.description || '',
           image: getStrapiMedia(attrs.cover || attrs.image),
         });
       } catch {
@@ -105,14 +106,21 @@ function NewsDetailPage() {
                     <img
                       src={article.image}
                       alt={article.title}
-                      className="w-full h-80 object-cover rounded-2xl mb-8"
+                      className="w-full max-h-[600px] object-contain rounded-2xl mb-8 bg-muted"
                     />
                   )}
 
                   <div className="prose prose-lg max-w-none text-foreground">
-                    <p className="text-lg leading-relaxed whitespace-pre-wrap">
-                      {article.description}
-                    </p>
+                    {article.content ? (
+                      <div
+                        className="text-lg leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: article.content }}
+                      />
+                    ) : (
+                      <p className="text-lg leading-relaxed whitespace-pre-wrap">
+                        {article.description}
+                      </p>
+                    )}
                   </div>
                 </article>
               ) : (
