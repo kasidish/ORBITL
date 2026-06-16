@@ -80,17 +80,19 @@ function NewsPage() {
       setLoading(true);
       try {
         const data = await fetchFromStrapi(
-          `/articles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&sort=date:desc`
+          `/articles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&sort=createdAt:desc`
         );
 
         if (cancelled || !data?.data) return;
 
         const items = data.data.map((item) => {
           const attrs = item.attributes || item;
+          const dateStr = attrs.date || attrs.publishedAt || attrs.createdAt;
           return {
             id: item.id,
-            date: attrs.date
-              ? new Date(attrs.date).toLocaleDateString('en-US', {
+            documentId: item.documentId || item.id,
+            date: dateStr
+              ? new Date(dateStr).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
@@ -160,7 +162,7 @@ function NewsPage() {
                   {newsItems.map((item, index) => (
                     <NewsCard
                       key={item.id}
-                      id={item.id}
+                      id={item.documentId || item.id}
                       date={item.date}
                       title={item.title}
                       description={item.description}

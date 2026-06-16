@@ -19,14 +19,20 @@ function NewsDetailPage() {
     async function load() {
       setLoading(true);
       try {
-        const data = await fetchFromStrapi(`/articles/${id}`);
-        if (cancelled || !data?.data) return;
+        const data = await fetchFromStrapi(
+          `/articles?filters[documentId][$eq]=${id}`
+        );
+        if (cancelled || !data?.data || data.data.length === 0) {
+          setArticle(null);
+          return;
+        }
 
-        const attrs = data.data.attributes || data.data;
+        const attrs = data.data[0].attributes || data.data[0];
+        const dateStr = attrs.date || attrs.publishedAt || attrs.createdAt;
         setArticle({
           title: attrs.title || '',
-          date: attrs.date
-            ? new Date(attrs.date).toLocaleDateString('en-US', {
+          date: dateStr
+            ? new Date(dateStr).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

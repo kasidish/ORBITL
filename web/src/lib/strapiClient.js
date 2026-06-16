@@ -11,12 +11,15 @@ export async function fetchFromStrapi(endpoint, options = {}) {
   }
 
   const url = `${strapiUrl}/api${endpoint}`;
+  console.log('[strapi] fetching:', url);
   const res = await fetch(url, {
     headers: { 'Content-Type': 'application/json' },
     ...options,
   });
 
   if (!res.ok) {
+    const body = await res.text();
+    console.error(`[strapi] ${res.status} ${res.statusText}:`, body);
     throw new Error(`Strapi error ${res.status}: ${res.statusText}`);
   }
 
