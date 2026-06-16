@@ -110,13 +110,21 @@ function NewsDetailPage() {
                   </div>
                 </article>
               ) : (
-                <div className="text-center py-16">
-                  <h2 className="text-2xl font-bold mb-4">Article not found</h2>
-                  <p className="text-muted-foreground mb-8">
-                    The article you're looking for doesn't exist or has been removed.
+                <div className="flex flex-col items-center justify-center min-h-[50vh] text-center">
+                  <div className="bg-muted/50 rounded-full p-6 mb-6">
+                    <svg className="h-12 w-12 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-3xl font-bold mb-3">Article not found</h2>
+                  <p className="text-muted-foreground mb-4 max-w-md">
+                    The article you're looking for doesn't exist, may have been moved, or is not yet published.
                   </p>
-                  <Button asChild>
-                    <Link to="/news">Back to News</Link>
+                  <p className="text-sm text-muted-foreground/70 mb-8">
+                    If you just published this article in Strapi, it may take a moment to appear.
+                  </p>
+                  <Button asChild size="lg" className="glow-orange">
+                    <Link to="/news">Browse All News</Link>
                   </Button>
                 </div>
               )}
