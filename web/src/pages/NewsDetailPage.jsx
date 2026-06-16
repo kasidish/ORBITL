@@ -22,7 +22,7 @@ function NewsDetailPage() {
         const data = await fetchFromStrapi(`/articles/${id}`);
         if (cancelled || !data?.data) return;
 
-        const attrs = data.data.attributes;
+        const attrs = data.data.attributes || data.data;
         setArticle({
           title: attrs.title || '',
           date: attrs.date
@@ -33,7 +33,7 @@ function NewsDetailPage() {
               })
             : '',
           description: attrs.description || '',
-          image: getStrapiMedia(attrs.image),
+          image: getStrapiMedia(attrs.cover || attrs.image),
         });
       } catch {
         setArticle(null);
@@ -68,7 +68,7 @@ function NewsDetailPage() {
             >
               <Link
                 to="/news"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8"
+                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mt-12 mb-8"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back to News

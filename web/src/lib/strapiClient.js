@@ -24,7 +24,18 @@ export async function fetchFromStrapi(endpoint, options = {}) {
 }
 
 export function getStrapiMedia(media) {
-  if (!media?.data?.attributes?.url) return null;
-  const url = media.data.attributes.url;
-  return url.startsWith('http') ? url : `${strapiUrl}${url}`;
+  if (!media) return null;
+
+  // Strapi v5 format: media is an object with url directly
+  if (media.url) {
+    return media.url.startsWith('http') ? media.url : `${strapiUrl}${media.url}`;
+  }
+
+  // Strapi v4 format: media.data.attributes.url
+  if (media?.data?.attributes?.url) {
+    const url = media.data.attributes.url;
+    return url.startsWith('http') ? url : `${strapiUrl}${url}`;
+  }
+
+  return null;
 }

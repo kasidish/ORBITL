@@ -85,19 +85,22 @@ function NewsPage() {
 
         if (cancelled || !data?.data) return;
 
-        const items = data.data.map((item) => ({
-          id: item.id,
-          date: item.attributes.date
-            ? new Date(item.attributes.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })
-            : '',
-          title: item.attributes.title || '',
-          description: item.attributes.description || '',
-          image: getStrapiMedia(item.attributes.image),
-        }));
+        const items = data.data.map((item) => {
+          const attrs = item.attributes || item;
+          return {
+            id: item.id,
+            date: attrs.date
+              ? new Date(attrs.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })
+              : '',
+            title: attrs.title || '',
+            description: attrs.description || '',
+            image: getStrapiMedia(attrs.cover || attrs.image),
+          };
+        });
 
         setNewsItems(items);
         setPageCount(data.meta?.pagination?.pageCount || 1);
