@@ -29,6 +29,10 @@ function NewsDetailPage() {
 
         const attrs = data.data[0].attributes || data.data[0];
         const dateStr = attrs.date || attrs.publishedAt || attrs.createdAt;
+        const bodyText = attrs.body
+          || attrs.content
+          || (Array.isArray(attrs.blocks) && attrs.blocks[0]?.body)
+          || '';
         setArticle({
           title: attrs.title || '',
           date: dateStr
@@ -39,7 +43,7 @@ function NewsDetailPage() {
               })
             : '',
           description: attrs.description || '',
-          content: attrs.body || attrs.content || attrs.description || '',
+          content: bodyText || attrs.description || '',
           image: getStrapiMedia(attrs.cover || attrs.image),
         });
       } catch {
@@ -81,7 +85,7 @@ function NewsDetailPage() {
                 Back to News
               </Link>
 
-              <div className="max-w-4xl">
+              <div className="max-w-4xl mx-auto">
                 {loading ? (
                 <div className="animate-pulse space-y-6">
                   <div className="h-8 bg-muted rounded w-3/4" />

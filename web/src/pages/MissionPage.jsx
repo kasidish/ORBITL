@@ -94,7 +94,7 @@ function MissionPage() {
                   },
                   {
                     title: "Industry Collaboration",
-                    desc: "Forge strong partnerships with aerospace companies and research institutions to align our projects with industry needs."
+                    desc: "Forge strong partnerships with space companies and research institutions to align our projects with industry needs."
                   }
                 ].map((goal, idx) => (
                   <div key={idx} className="p-6 rounded-2xl bg-muted/50 border border-border/50">
