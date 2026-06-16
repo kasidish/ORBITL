@@ -20,7 +20,7 @@ function NewsDetailPage() {
       setLoading(true);
       try {
         const data = await fetchFromStrapi(
-          `/articles?filters[documentId][$eq]=${id}`
+          `/articles?filters[documentId][$eq]=${id}&populate=cover`
         );
         if (cancelled || !data?.data || data.data.length === 0) {
           setArticle(null);
