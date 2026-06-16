@@ -80,7 +80,7 @@ function NewsPage() {
       setLoading(true);
       try {
         const data = await fetchFromStrapi(
-          `/articles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&sort=createdAt:desc&populate=cover`
+          `/articles?pagination[page]=${page}&pagination[pageSize]=${PAGE_SIZE}&sort=createdAt:desc&populate=*`
         );
 
         if (cancelled || !data?.data) return;

@@ -280,7 +280,7 @@ function JoinPage() {
                       Portfolio / CV / Documents
                     </Label>
                     <p className="text-sm text-muted-foreground">
-                      Upload your portfolio, CV, or any relevant documents (PDF, JPEG, PNG, WebP — max 10MB)
+                      Upload your portfolio, CV, or any relevant documents (PDF, JPEG, PNG — max 10MB)
                     </p>
 
                     {formData.portfolio_file ? (
@@ -335,7 +335,7 @@ function JoinPage() {
                       name="additional_notes"
                       value={formData.additional_notes}
                       onChange={handleInputChange}
-                      placeholder="e.g., Check out my GitHub: https://github.com/yourname&#10;Or any questions you have..."
+                      placeholder="e.g., My GitHub: https://github.com/yourname or any questions you have..."
                       className="min-h-[120px] text-foreground"
                     />
                   </div>
