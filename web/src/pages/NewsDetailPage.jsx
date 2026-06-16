@@ -39,7 +39,7 @@ function NewsDetailPage() {
               })
             : '',
           description: attrs.description || '',
-          content: attrs.content || attrs.description || '',
+          content: attrs.body || attrs.content || attrs.description || '',
           image: getStrapiMedia(attrs.cover || attrs.image),
         });
       } catch {
@@ -103,11 +103,13 @@ function NewsDetailPage() {
                   </p>
 
                   {article.image && (
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full max-h-[600px] object-contain rounded-2xl mb-8 bg-muted"
-                    />
+                    <div className="flex justify-center mb-8">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="max-h-[600px] max-w-full object-contain rounded-2xl"
+                      />
+                    </div>
                   )}
 
                   <div className="prose prose-lg max-w-none text-foreground">
