@@ -19,25 +19,49 @@ const FALLBACK_NEWS = [
     id: 1,
     date: 'June 10, 2026',
     title: 'ORBITL Announces New Recruitment Drive',
-    description: 'We are opening our doors to passionate students from all engineering disciplines to join our upcoming satellite project.',
+    description: 'We are opening our doors to passionate students from all engineering disciplines to join our upcoming satellite project. This is a great opportunity to gain hands-on experience in space technology.',
   },
   {
     id: 2,
     date: 'May 24, 2026',
     title: 'Successful Test of New Propulsion Module',
-    description: 'Our propulsion team successfully completed the static fire test of the new micro-thruster design in the KMITL labs.',
+    description: 'Our propulsion team successfully completed the static fire test of the new micro-thruster design in the KMITL labs. The test validated our custom injector design and achieved target thrust levels.',
   },
   {
     id: 3,
     date: 'April 15, 2026',
     title: 'Partnership with National Space Agency',
-    description: 'ORBITL has signed a memorandum of understanding to collaborate on educational outreach programs.',
+    description: 'ORBITL has signed a memorandum of understanding to collaborate on educational outreach programs. This partnership will provide our members with access to industry experts and launch opportunities.',
   },
   {
     id: 4,
     date: 'March 02, 2026',
     title: 'Avionics Team Finalizes PCB Design',
-    description: 'The core flight computer design has been finalized and sent for manufacturing, marking a major milestone.',
+    description: 'The core flight computer design has been finalized and sent for manufacturing, marking a major milestone. The board features radiation-tolerant components and redundant communication buses.',
+  },
+  {
+    id: 5,
+    date: 'February 18, 2026',
+    title: 'Ground Station Antenna Installation Complete',
+    description: 'Our ground station team has successfully installed and tested the new 3-axis antenna tracking system. The system can now automatically track LEO satellites for telemetry reception.',
+  },
+  {
+    id: 6,
+    date: 'January 25, 2026',
+    title: 'ORBITL Wins Best Student Project Award',
+    description: 'Our team received the Best Student Project Award at the annual KMITL Engineering Expo for our CubeSat development work. The judges praised our integrated approach to satellite subsystems.',
+  },
+  {
+    id: 7,
+    date: 'December 10, 2025',
+    title: 'ADCS Prototype Passes Environmental Testing',
+    description: 'The attitude determination and control subsystem prototype has passed vibration and thermal vacuum testing. The reaction wheels and star tracker performed within specifications.',
+  },
+  {
+    id: 8,
+    date: 'November 05, 2025',
+    title: 'New Members Complete Basic Training',
+    description: 'Congratulations to our 15 new members who completed the basic satellite engineering training program. They are now ready to contribute to ongoing projects across all subsystems.',
   },
 ];
 

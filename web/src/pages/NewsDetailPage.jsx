@@ -60,7 +60,7 @@ function NewsDetailPage() {
         <Header />
 
         <main className="flex-1 pt-24 pb-16">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,7 +74,8 @@ function NewsDetailPage() {
                 Back to News
               </Link>
 
-              {loading ? (
+              <div className="max-w-4xl">
+                {loading ? (
                 <div className="animate-pulse space-y-6">
                   <div className="h-8 bg-muted rounded w-3/4" />
                   <div className="h-4 bg-muted rounded w-1/4" />
@@ -119,6 +120,7 @@ function NewsDetailPage() {
                   </Button>
                 </div>
               )}
+              </div>
             </motion.div>
           </div>
         </main>
