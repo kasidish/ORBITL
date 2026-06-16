@@ -3,9 +3,11 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
+import { Upload, X, FileText, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import {
   Select,
   SelectContent,
@@ -17,6 +19,14 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import supabase from '@/lib/supabaseClient';
 
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+const ALLOWED_TYPES = [
+  'application/pdf',
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+];
+
 function JoinPage() {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,8 +35,11 @@ function JoinPage() {
     email: '',
     major: '',
     year_of_study: '',
-    area_of_interest: ''
+    area_of_interest: '',
+    portfolio_file: null,
+    additional_notes: '',
   });
+  const [filePreview, setFilePreview] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,6 +48,56 @@ function JoinPage() {
 
   const handleSelectChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      toast.error('Please upload a PDF, JPEG, PNG, or WebP file');
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+      toast.error('File size must be less than 10MB');
+      return;
+    }
+
+    setFormData(prev => ({ ...prev, portfolio_file: file }));
+
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => setFilePreview(e.target.result);
+      reader.readAsDataURL(file);
+    } else {
+      setFilePreview(null);
+    }
+  };
+
+  const removeFile = () => {
+    setFormData(prev => ({ ...prev, portfolio_file: null }));
+    setFilePreview(null);
+  };
+
+  const uploadFile = async (file) => {
+    if (!supabase || !file) return null;
+
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${fileExt}`;
+    const filePath = `portfolios/${fileName}`;
+
+    const { error } = await supabase.storage
+      .from('member-uploads')
+      .upload(filePath, file);
+
+    if (error) throw error;
+
+    const { data: urlData } = supabase.storage
+      .from('member-uploads')
+      .getPublicUrl(filePath);
+
+    return urlData.publicUrl;
   };
 
   const handleSubmit = async (e) => {
@@ -49,7 +112,22 @@ function JoinPage() {
 
     try {
       if (!supabase) throw new Error('Supabase not configured');
-      const { error } = await supabase.from('members').insert([formData]);
+
+      let portfolio_url = null;
+      if (formData.portfolio_file) {
+        portfolio_url = await uploadFile(formData.portfolio_file);
+      }
+
+      const { error } = await supabase.from('members').insert([{
+        full_name: formData.full_name,
+        email: formData.email,
+        major: formData.major,
+        year_of_study: formData.year_of_study,
+        area_of_interest: formData.area_of_interest,
+        portfolio_url,
+        additional_notes: formData.additional_notes || null,
+      }]);
+
       if (error) throw error;
 
       toast.success('Welcome to ORBITL! Your membership application has been submitted.');
@@ -59,8 +137,11 @@ function JoinPage() {
         email: '',
         major: '',
         year_of_study: '',
-        area_of_interest: ''
+        area_of_interest: '',
+        portfolio_file: null,
+        additional_notes: '',
       });
+      setFilePreview(null);
 
       setTimeout(() => {
         navigate('/');
@@ -192,6 +273,71 @@ function JoinPage() {
                         <SelectItem value="SocialMedia">Social Media Team</SelectItem>
                       </SelectContent>
                     </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="portfolio">
+                      Portfolio / CV / Documents
+                    </Label>
+                    <p className="text-sm text-muted-foreground">
+                      Upload your portfolio, CV, or any relevant documents (PDF, JPEG, PNG, WebP — max 10MB)
+                    </p>
+
+                    {formData.portfolio_file ? (
+                      <div className="flex items-center gap-3 p-3 bg-muted rounded-xl">
+                        {filePreview ? (
+                          <img src={filePreview} alt="Preview" className="w-12 h-12 object-cover rounded-lg" />
+                        ) : (
+                          <div className="w-12 h-12 bg-background rounded-lg flex items-center justify-center">
+                            <FileText className="h-6 w-6 text-muted-foreground" />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate">{formData.portfolio_file.name}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {(formData.portfolio_file.size / 1024 / 1024).toFixed(2)} MB
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={removeFile}
+                          className="p-1 hover:bg-background rounded-lg transition-colors"
+                        >
+                          <X className="h-4 w-4 text-muted-foreground" />
+                        </button>
+                      </div>
+                    ) : (
+                      <label className="flex flex-col items-center gap-2 p-6 border-2 border-dashed border-border rounded-xl cursor-pointer hover:border-primary/50 transition-colors">
+                        <Upload className="h-8 w-8 text-muted-foreground" />
+                        <span className="text-sm text-muted-foreground">
+                          Click to upload or drag and drop
+                        </span>
+                        <input
+                          id="portfolio"
+                          type="file"
+                          className="hidden"
+                          accept=".pdf,.jpeg,.jpg,.png,.webp"
+                          onChange={handleFileChange}
+                        />
+                      </label>
+                    )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="additional_notes">
+                      Additional Notes / Questions / Links
+                    </Label>
+                    <p className="text-sm text-muted-foreground">
+                      Share any questions, links to your work (GitHub, portfolio), or additional information
+                    </p>
+                    <Textarea
+                      id="additional_notes"
+                      name="additional_notes"
+                      value={formData.additional_notes}
+                      onChange={handleInputChange}
+                      placeholder="e.g., Check out my GitHub: https://github.com/yourname&#10;Or any questions you have..."
+                      className="min-h-[120px] text-foreground"
+                    />
                   </div>
 
                   <Button

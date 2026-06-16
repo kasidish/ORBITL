@@ -7,6 +7,7 @@ import JoinPage from './pages/JoinPage';
 import AboutPage from './pages/AboutPage';
 import MissionPage from './pages/MissionPage';
 import NewsPage from './pages/NewsPage';
+import NewsDetailPage from './pages/NewsDetailPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/mission" element={<MissionPage />} />
+        <Route path="/news/:id" element={<NewsDetailPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/join" element={<JoinPage />} />
